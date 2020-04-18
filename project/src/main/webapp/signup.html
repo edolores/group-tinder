@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title> Login Page </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body align="center">
+        <h1> Sign Up </h1>
+        <div> Username: </div>
+        <input id="username-signup" name="username-signup" type="text"></input>
+        <div> Password: </div>
+        <input id="password-signup" name="password-signup" type="text"></input><br><br>
+  </body>
+  <body align="center">
+      <div> Security question #1</div><br>
+      <select id="security-question1">
+          <option disabled selected value=""></option>
+          <option>What is the name of your favorite author?</option>
+          <option>What is the name of your favorite movie?</option>
+      </select><br><br>
+      <input id="answer1" name="answer1" type="text"></input><br><br>
+
+      <div> Security question #2</div><br>
+      <select id="security-question2">
+          <option disabled selected value=""></option>
+          <option>What is the name of your first pet?</option>
+          <option>What is the name of the first person you kissed?</option>
+      </select><br><br>
+      <input id="answer2" name="answer2" type="text"></input><br><br>
+
+      <div> Security question #3</div><br>
+      <select id="security-question3">
+          <option disabled selected value=""></option>
+          <option>What was your childhood nickname?</option>
+          <option>What is your oldest sibling's middle name?</option>
+      </select><br><br>
+      <input id="answer3" name="answer3" type="text"></input><br><br>
+  </body>
+  <body align="center">
+      <button onclick="signUp()">Sign Up</button><br><br>
+      <div> Already have an account? </div>
+      <a href="index.html"> Login </a>
+  </body>
+</html>
