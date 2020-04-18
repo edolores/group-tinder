@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 var namesCheckedOff;
-var loginUsername = "";
 
 function getChat() {
     fetch('/data')
@@ -127,7 +126,6 @@ function createListElement(text) {
 function login(){
     const username = document.getElementById("username-login").value;
     const password = document.getElementById("password-login").value;
-    loginUsername = document.getElementById("username-login").value;
     const params = new URLSearchParams();
     params.append("username", username);
     params.append("password", password);
@@ -137,7 +135,10 @@ function login(){
             window.alert("Login Unsuccessful.");
         window.location.replace(output);
     });
+    var queryString = "?user=" + username;
+    window.location.href = "categories.html" + queryString;  
 }
+
 function signUp(){
     const username = document.getElementById("username-signup").value;
     const password = document.getElementById("password-signup").value;
@@ -199,6 +200,7 @@ function getSecurityQuestions(){
 
             const button = document.createElement("button");
             button.innerHTML = "Get Password";
+            button.className = "button-a";
             button.setAttribute("onclick", "getUserPassword()");
 
             questionList.appendChild(button);
@@ -210,12 +212,14 @@ function getSecurityQuestions(){
 function getQuestion(question) {    
     const questionElement = document.createElement("li");
     questionElement.style.listStyle = "none";
+    questionElement.className = "li";
     questionElement.innerText = question;
 
     return questionElement;
 }
 function makeAnswerField(answerNumber){
     const answer = document.createElement("input");
+    answer.className = "li";
     answer.id = "answerQ" + answerNumber;
     return answer;
 }
@@ -237,10 +241,5 @@ function getUserPassword(){
             window.alert("One or more questions were answered incorrectly. Please try again.");
         window.location.replace("/restore.html");
     });
-}
-
-function getUsername(){
-    const username = document.getElementById("username");
-    username.innerHTML = loginUsername;
 }
 

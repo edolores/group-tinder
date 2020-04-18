@@ -162,33 +162,31 @@ body {
 
 
 /*  ARIELS CSS BELOW  */
-/*
-h1 {
+
+.heading1{
     border-bottom: 5px solid black;
     font-size: 500%;
 }
-div, input{
+.heading2{
     font-family: "Gill Sans", sans-serif;
     font-size: 27pt;
 }
-question{
-    font-family: "Gill Sans", sans-serif;
-    font-size: 25px;
-}
-button, a{
-    font-size: 18pt;
-}
-option{
-    font-size: 24pt;
-}
-select{
-    font-size: 27pt;
+
+.select-option{
+    font-size: 17pt;
     width: 410px;
 }
-li{
+.li{
     font-size: 25px;
 }
-singleQuestion{
+.button-a{
+    font-size: 18pt;
+}
+.question{
+    font-family: "Gill Sans", sans-serif;
+    font-size: 25px;
+}
+.single-question{
     font-family: "Gill Sans", sans-serif;
     font-size: 16pt;
-}*/
+}
