@@ -1,4 +1,3 @@
-
 /*Formatting for header div*/
 #header {
   border-radius: 15px;
@@ -58,12 +57,38 @@
   font-family: "Verdana", Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#chat-categories, #number-checked-off, #submit-group-names {
+  border-radius: 15px;
+  background: #2b425e;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  width: 7%;
+  height: 45px; 
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+
+#number-checked-off {
+    height: 120px;
+    width: 500px;
+    color: white;
+    font: verdana;
+    font-family: "Verdana", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* #submit-group-names {
+    height: 50px;
+    width: 10px;
+} */
+
 /*Container for greeting from me*/
 #quote-container {
     border: none;
     margin-left: auto;
     margin-right: auto;
-    width: 1100px;
+    width: 70%;
     padding-bottom: 20px; 
     margin-top: 20px;
     float: left;
@@ -75,7 +100,7 @@
     color: #e2a34b;
 }
 
-#categories-list {
+.table-container {
   border-radius: 15px;
   background: #2b425e;
   padding: 20px;
@@ -83,13 +108,37 @@
   margin-right: auto;
   margin-bottom: 30px;
   width: 60%;
-  height: 400px; 
+  height: 390px; 
   -webkit-box-shadow: 5px 5px 15px 5px #000000;
   box-shadow: 5px 5px 15px 5px #000000;
+  overflow-y: auto;
 
   color: white;
   font: verdana;
   font-family: "Verdana", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#names-container {
+    height: 450px;
+}
+
+/*Class for tables*/
+.list-table {
+    table-layout:fixed;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 250%;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.list-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.list-table tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
 }
 
 /*Class to describe buttons*/
