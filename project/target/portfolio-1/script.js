@@ -131,12 +131,13 @@ function login(){
     params.append("password", password);
     
     fetch("/login?" + params.toString()).then(response => response.text()).then((output) => {
-        if(output.localeCompare("/index.html") == 0)
-            window.alert("Login Unsuccessful.");
-        window.location.replace(output);
-    });
-    var queryString = "?user=" + username;
-    window.location.href = "categories.html" + queryString;  
+        if(output.localeCompare("/index.html") == 0){
+            window.alert("Login Unsuccessful.")
+            window.location.href = output;
+        }
+        else
+            window.location.href = output + "?user=" + username;
+    }); 
 }
 
 function signUp(){
@@ -243,3 +244,8 @@ function getUserPassword(){
     });
 }
 
+function relocateUser(location){
+    var queryString = decodeURIComponent(window.location.search);
+    var user = queryString.split("=")[1];
+    window.location.href = location + "?user=" + user;
+}

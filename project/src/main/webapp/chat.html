@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body onload="getChat()">
+  <body onload="getChat(); assignUsernameValue();">
     <div id="header">
       <h1 id = "page-title">
           Chat
@@ -28,7 +28,7 @@
         <h2>Send Message</h2>
 
         <h3>Username:</h3>
-        <p id = "username"></p>
+        <p id = "in-chat-username"></p>
         
         <!--<input type="text" id = "uname" name="name">-->
         <br>
@@ -42,5 +42,13 @@
     <div id = "chat-categories">
         <a href="categories.html" class = "button">Categories</a>
     </div>
+    <script> 
+        function assignUsernameValue(){
+            var queryString = decodeURIComponent(window.location.search);
+            var user = queryString.split("=")[1];
+            window.alert(user + " CALLING FROM CHAT GAMES");
+            document.getElementById("in-chat-username").innerHTML = user;
+        }
+    </script>
   </body>
 </html>
