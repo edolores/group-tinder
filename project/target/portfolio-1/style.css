@@ -122,6 +122,28 @@
     height: 450px;
 }
 
+#list-of-group-names {
+    display: none;
+}
+
+#chat-members {
+  border-radius: 15px;
+  background: #2b425e;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  width: 50%;
+  height: 100px; 
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+  overflow-y: auto;
+
+  color: white;
+  font: verdana;
+  font-family: "Verdana", Verdana, Geneva, Tahoma, sans-serif;
+}
+
 /*Class for tables*/
 .list-table {
     table-layout:fixed;

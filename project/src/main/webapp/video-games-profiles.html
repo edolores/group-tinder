@@ -7,7 +7,7 @@
     <script src="script.js"></script>
   </head>
   <!-- Use another function if you want to layer ufnctions -->
-  <body onload="addTable()">
+  <body onload="getProfiles()">
     <div id="header">
       <h1 id = "page-title">
           Video Games Profiles
@@ -15,21 +15,25 @@
     </div>
 
     <br><br>
+    <div>
+        <form id="profile-form" onsubmit="return createGroup()" action="/video-games-group-names" method="POST">
+        <input type="text" id="list-of-group-names" name="profile-name-list"></input>
+        <div id = "names-container" class = "table-container">
+            <table id = "names-table">
+                <!-- <tr>This is where the names will appear</tr> -->
+            </table>
+        </div>
 
-    <div id = "names-container" class = "table-container">
-        <!-- <form action="/profiles" method="POST"> -->
-        <table id = "names-table">
-            <!-- <tr>This is where the names will appear</tr> -->
-        </table>
-    </div>
+        <div id = "number-checked-off">
+            <p>NUMBER OF NAMES CHECKED OFF:<p id = "names-text-test"></p></p>
+            <p>Check here if you would like to be added to this category <input type = "checkbox" id = "add-self-to-group"></p>
+        </div>
 
-    <div id = "number-checked-off">
-        <p>NUMBER OF NAMES CHECKED OFF:<p id = "names-text-test"></p></p>
-        <p>Check here if you would like to be added to this category <input type = "checkbox" id = "add-self-to-group"></p>
-    </div>
-
-    <div id = "submit-group-names">
-        <a href="chat.html" class = "button">Submit</a>
+        <div id = "submit-group-names">
+            <input type="submit" class = "button"/>
+            <!-- <button onclick="createGroup()" class="button">Submit</button> -->
+        </div>
+        </form>
     </div>
   </body>
 </html>
