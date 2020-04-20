@@ -22,7 +22,7 @@
 }
 
 /*Formatting for greeting div*/
-#greeting {
+#message-section{
   border-radius: 15px;
   background: #2b425e;
   padding: 20px;
@@ -84,7 +84,7 @@
 } */
 
 /*Container for greeting from me*/
-#quote-container {
+#message-container {
     border: none;
     margin-left: auto;
     margin-right: auto;

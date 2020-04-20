@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*; 
 import com.google.gson.Gson;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/* Servlet that handles user submitting names for groupchat*/
 @WebServlet("/video-games-group-names")
 public class VGProfilesDataServlet extends HttpServlet {
 
@@ -39,6 +39,7 @@ public class VGProfilesDataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
+    // Retrieve usernames that are in the groupchat
     ArrayList<String> list = new ArrayList<String>();
     for(Entity entity: results.asIterable()){
         String uname = (String) entity.getProperty("Username");
@@ -49,7 +50,7 @@ public class VGProfilesDataServlet extends HttpServlet {
     Gson gson = new Gson();
     String unames = gson.toJson(list);
 
-    /*Create commemtns*/
+    // Create json for usernames
     StringBuilder json = new StringBuilder();
     json.append("{\"usernames\": ");
     json.append(unames);
@@ -60,22 +61,20 @@ public class VGProfilesDataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    // Using the string of names, create a list of the usernames
     String nameInput = request.getParameter("profile-name-list");
-
-    System.out.println(nameInput);
-
     List<String> profileNameList = new ArrayList<String>(Arrays.asList(nameInput.split(",")));
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
+    // Add a new entity for each username
     for(String pName: profileNameList){
         Entity vgEntity = new Entity("VideoGameProfiles");
         vgEntity.setProperty("Username", pName);
         datastore.put(vgEntity);
     }
 
-    // Redirect back to the HTML page.
+    // Redirect back to the chat page.
     response.sendRedirect("/video-games-chat.html");
   }
 }

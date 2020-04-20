@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*; 
 import com.google.gson.Gson;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/* Servlet that handles getting and posting messages to group chat*/
 @WebServlet("/video-games-data")
 public class VGChatDataServlet extends HttpServlet {
 
@@ -41,6 +41,7 @@ public class VGChatDataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
+    // Build list of comment strings
     ArrayList<String> list = new ArrayList<String>();
     for(Entity entity: results.asIterable()){
         StringBuilder str = new StringBuilder();
@@ -61,7 +62,7 @@ public class VGChatDataServlet extends HttpServlet {
     Gson gson = new Gson();
     String comments = gson.toJson(list);
 
-    /*Create comments*/
+    /*Create json with username and comments*/
     StringBuilder json = new StringBuilder();
     json.append("{\"username\":\"");
     json.append(username);
