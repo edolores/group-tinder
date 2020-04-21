@@ -170,26 +170,32 @@
 
 #video-games-tr:hover {
     background-color: #F8BBD0;
+    /* background-color: #B71C1C; */
 }
 
 #sports-tr:hover {
     background-color: #FFE0B2;
+    /* background-color: #1B5E20; */
 }
 
 #fashion-tr:hover {
     background-color: #FFF9C4;
+    /* background-color: #311B92; */
 }
 
 #food-tr:hover {
     background-color: #DCEDC8;
+    /* background-color: #006064; */
 }
 
 #music-tr:hover {
     background-color: #B3E5FC;
+    /* background-color: #880E4F; */
 }
 
 #travel-tr:hover {
     background-color: #D1C4E9;
+    /* background-color: #FF6F00; */
 }
 
 /*Class to describe buttons*/
