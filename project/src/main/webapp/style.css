@@ -151,6 +151,11 @@
     font-size: 250%;
     border-collapse: collapse;
     width: 100%;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
 }
 
 .list-table td {
@@ -161,6 +166,30 @@
 .list-table tr:hover {
     background-color: #ddd;
     cursor: pointer;
+}
+
+#video-games-tr:hover {
+    background-color: #F8BBD0;
+}
+
+#sports-tr:hover {
+    background-color: #FFE0B2;
+}
+
+#fashion-tr:hover {
+    background-color: #FFF9C4;
+}
+
+#food-tr:hover {
+    background-color: #DCEDC8;
+}
+
+#music-tr:hover {
+    background-color: #B3E5FC;
+}
+
+#travel-tr:hover {
+    background-color: #D1C4E9;
 }
 
 /*Class to describe buttons*/
