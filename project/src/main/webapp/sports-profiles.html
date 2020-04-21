@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sports Profiles</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body onload="getProfiles()">
+    <div id="header">
+      <h1 id = "page-title">
+          Sports Profiles
+      </h1>
+    </div>
+
+    <br><br>
+    <div>
+        <!-- Form for submitting the names checked off -->
+        <form id="profile-form" onsubmit="return createGroup()" action="/sports-group-names" method="POST">
+        <input type="text" id="list-of-group-names" name="profile-name-list"></input>
+
+        <!-- Where profile names will appear -->
+        <div id = "names-container" class = "table-container">
+            <table id = "names-table"></table>
+        </div>
+
+        <!-- Shows number of names checked off and allows users to add themselves -->
+        <div id = "number-checked-off">
+            <p>NUMBER OF NAMES CHECKED OFF:<p id = "names-text-test"></p></p>
+            <p>Check here if you would like to be added to this category <input type = "checkbox" id = "add-self-to-group"></p>
+        </div>
+
+        <!-- Button for submitting group names -->
+        <div id = "submit-group-names">
+            <input type="submit" class = "button"/>
+        </div>
+        </form>
+    </div>
+  </body>
+</html>
