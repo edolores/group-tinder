@@ -43,7 +43,7 @@ function getChatMemberProfiles(page) {
         myStrings.innerHTML = '';
         var title = 'Chat Members:';
         var liElement = createListElement(title);
-        liElement.style='list-style: none; font-size: 150%; font-weight: bold;';
+        liElement.classList.add('chat-member-list-element');
         myStrings.appendChild(liElement);
 
         profileNames.usernames.forEach((line) => {

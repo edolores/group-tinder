@@ -163,6 +163,12 @@
     cursor: pointer;
 }
 
+.chat-member-list-element {
+    list-style: none; 
+    font-size: 150%; 
+    font-weight: bold;
+}
+
 /*Class to describe buttons*/
 .button {
   background-color: #e4e8c1;
