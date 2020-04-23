@@ -41,10 +41,11 @@ function getChatMemberProfiles(page) {
     .then((profileNames) => {
         const myStrings = document.getElementById('chat-members');
         myStrings.innerHTML = '';
-        var title = 'Chat Members:';
-        var liElement = createListElement(title);
-        liElement.style='list-style: none; font-size: 150%; font-weight: bold;';
-        myStrings.appendChild(liElement);
+        var title = 'Chat Members:';
+        var liElement = createListElement(title);
+        liElement.classList.add('chat-member-list-element');
+        myStrings.appendChild(liElement);
+
 
         profileNames.usernames.forEach((line) => {
             console.log(line);
