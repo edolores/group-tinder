@@ -11,54 +11,77 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-var namesCheckedOff;
+var namesCheckedOff;//counts number of profiles selected for group
 var loginUsername = "";
+var vgChatMade;//flag that checks if a chat has been made for the vg category
 
-function getChat() {
-    fetch('/data')
+/*Get actual chat messages*/
+function getChat(page) {
+    fetch(page)
     .then(response => response.json())
     .then((funFacts) => {
         const uname  = document.getElementById('username');
         uname.innerText = funFacts.username;
 
-        const myStrings = document.getElementById('quote-container');
+        const myStrings = document.getElementById('message-container');
         myStrings.innerHTML = '';
         funFacts.comments.forEach((line) => {
             console.log(line);
             // check list element inner text
             var liElement = createListElement(line);
-            // var n = liElement.innerText.includes('test-user');
-            // console.log(n);
-            // if(n){
-            //     liElement.style = 'float:right;';
-            // } else{
-            //     liElement.style = 'float:left;';
-            // }
             myStrings.appendChild(liElement);
         });
     });
 }
 
-function addTable() {
+/*Get profile names that belong to chat*/
+function getChatMemberProfiles(page) {
+    fetch(page)
+    .then(response => response.json())
+    .then((profileNames) => {
+        const myStrings = document.getElementById('chat-members');
+        myStrings.innerHTML = '';
+        var title = 'Chat Members:';
+        var liElement = createListElement(title);
+        liElement.classList.add('chat-member-list-element');
+        myStrings.appendChild(liElement);
+
+        profileNames.usernames.forEach((line) => {
+            console.log(line);
+            var liElement = createListElement(line);
+            liElement.style='list-style: none;';
+            myStrings.appendChild(liElement);
+        });
+
+    });
+}
+
+/*Get profiles that belong to category*/
+function getProfiles() {
     namesCheckedOff = 0;
-    const nameCount = document.getElementById('names-text-test');
-    nameCount.innerText = namesCheckedOff;
+    vgChatMade = 0;
+    document.getElementById('names-text-test').innerText = namesCheckedOff;
     var tablearea = document.getElementById('names-table'),
         table = document.createElement('table');
     table.id = 'profile-list';
     table.classList.add('list-table');
 
     for (var i = 0; i < 20; i++) {
-        //create a new table row
-        var name = 'Andrew Boyle';
+        //Create a static list of names, with some interchanging names
+        var name = 'Andrew Brooks';
+        if(i%3==0){
+            name = 'Gerald Jones';
+        } else if(i%5==0){
+            name = 'Brad Smith';
+        }
         var tr = document.createElement('tr');
         //creates td
         var td = document.createElement('td');
         //each td requires it's own checkbox variable
-        //td also has a name field that may be useful
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.style = 'width:40px;height:40px;';
+        //Event listerner for changing checkbox value
         checkbox.addEventListener('click', function() {
             if(!this.checked){
                 this.checked = true;
@@ -68,15 +91,15 @@ function addTable() {
         });
         //append the checkbox to the td
         td.appendChild(checkbox);
-        //add event listentener for when user clicks td
+        //add event listentener for when user clicks table row
         td.addEventListener('click', function() {
             var cbox = this.childNodes[0];
             if(!cbox.checked){
                 cbox.checked = true;
                 namesCheckedOff++;
             } else{
-                namesCheckedOff--;
                 cbox.checked = false;
+                namesCheckedOff--;
             }
             nameCount.innerText = namesCheckedOff;
         });
@@ -85,39 +108,55 @@ function addTable() {
         tr.appendChild(td);
         //add actual text to the cells of the table row
         tr.cells[0].appendChild(document.createTextNode(name));
-        // if(i%2==0){
-        //     tr.childNodes[0].align = 'right';
-        //     // tr.childNodes[0].text-align = 'left';
-        // } else{
-        //     tr.align = 'left';
-        // } 
         table.appendChild(tr);
     }
-
     tablearea.appendChild(table);
 }
 
-// TODO: Figure out if you need anything dynamic on this web page
-function getProfiles() {
-    fetch('/profiles')
-    .then(response => response.json())
-    .then((funFacts) => {
-        const uname  = document.getElementById('username');
-        uname.innerText = funFacts.username;
-
-        const myStrings = document.getElementById('quote-container');
-        myStrings.innerHTML = '';
-        funFacts.comments.forEach((line) => {
-            console.log(line);
-            myStrings.appendChild(createListElement(line));
-        });
-    });
-}
-
+/*Create a list element*/
 function createListElement(text) {
   const liElement = document.createElement('li');
   liElement.innerText = text;
   return liElement;
+}
+
+/*Collects all the checked off names and puts them into the list*/
+function createGroup() {
+    //Error handling for submitting a group
+    var checkedSelf = document.getElementById('add-self-to-group');
+    if(!checkedSelf.checked){
+        window.alert('Add yourself to this category before creating group!');
+        return false;
+    } else if(namesCheckedOff < 3){
+        window.alert('Make sure to add at least 3 people to your group!');
+        return false;
+    }
+
+    vgChatMade = 1;
+    //Retrieve the table holding profile names
+    var tablearea = document.getElementById('names-table');
+    var table = document.getElementById('profile-list');
+    var profileNames = '';
+
+    //Retrive the names that the user has selected from the table
+    for (var i = 0, row; row = table.rows[i]; i++) {
+        var checkbox = row.childNodes[0].childNodes[0];
+        if(checkbox.checked){
+            profileNames += row.childNodes[0].innerText;
+            profileNames += ',';
+        }
+    }
+    document.getElementById('list-of-group-names').value = profileNames;
+    return true;
+}
+
+/*function for checking if user has already created a chat for the selected category*/
+function checkChatCreated() {
+    if(vgChatMade) {
+        window.location.href = 'video-games-chat.html';
+    } else{
+        window.location.href = 'video-games-profiles.html';
+    }
 }
 
 
@@ -138,6 +177,7 @@ function login(){
         window.location.replace(output);
     });
 }
+
 function signUp(){
     const username = document.getElementById("username-signup").value;
     const password = document.getElementById("password-signup").value;

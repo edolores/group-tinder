@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Group Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body onload="getChat('/video-games-data'); getUsername(); getChatMemberProfiles('/video-games-group-names');">
+    <div id="header">
+      <h1 id = "page-title">
+          Chat
+      </h1>
+    </div>
+
+    <br><br>
+
+    <!-- Display messages -->
+    <div id = "message-section">
+        <br/><br/>
+        <div id = "message-container"></div>
+    </div>
+
+    <!-- Input comments -->
+    <div id = "submit-comment">
+        <form action="/video-games-data" method="POST">
+      
+        <br/><br/>
+        <h2>Send Message</h2>
+
+        <h3>Username:</h3>
+        <p id = "username"></p>
+        <!-- <input type="text" id = "uname" name="name"> -->
+        <br>
+
+        <p>Input:</p>
+        <textarea name="text-input">Leave your comment here!</textarea>
+        <br/><br/>
+        <input type="submit" class = "button"/>
+        </form>
+    </div>
+
+    <!-- List member names here -->
+    <div id = "chat-members">
+    </div>
+
+    <!-- Return to chat categories -->
+    <div id = "chat-categories">
+        <a href="categories.html" class = "button">Categories</a>
+    </div>
+  </body>
+</html>
