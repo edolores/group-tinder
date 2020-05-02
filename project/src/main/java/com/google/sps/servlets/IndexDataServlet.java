@@ -74,18 +74,7 @@ public class IndexDataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-    String nameInput = request.getParameter("name");
-
-    //if the username is different and isn't empty
-    if((nameInput != username) && (nameInput.length() != 0)){
-        username = nameInput;
-    }
-    else if((nameInput.length()) == 0 && (username.length() == 0)){
-      response.setContentType("text/html");
-      response.getWriter().println("Please enter a non-empty username");
-      return;
-    }
+    String nameInput = request.getParameter("in-chat-username");
 
     // Get the input from the form.
     String input = request.getParameter("text-input");
@@ -108,6 +97,6 @@ public class IndexDataServlet extends HttpServlet {
     datastore.put(comEntity);
 
     // Redirect back to the HTML page.
-    response.sendRedirect("/chat.html");
+    response.sendRedirect("/chat.html?user=" + nameInput);
   }
 }

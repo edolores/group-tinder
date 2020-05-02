@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body onload="assignUsernameValue()">
+  <body onload="assignUsernameValue('username', 'Welcome, ')">
     <div id="header">
       <h1 id = "page-title">
           <p id="username"></p>
@@ -33,12 +33,5 @@
             <tr><td onclick="window.location.href = 'index.html';">Travel</td></tr>
         </table>
     </div>
-    <script>
-        function assignUsernameValue(){
-            var queryString = decodeURIComponent(window.location.search);
-            var user = queryString.split("=")[1];
-            document.getElementById("username").innerHTML = "Welcome, " + user; 
-        } 
-    </script>
   </body>
 </html>

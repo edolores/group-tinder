@@ -212,8 +212,8 @@ function getSecurityQuestions(){
 }
 function getQuestion(question) {    
     const questionElement = document.createElement("li");
-    questionElement.style.listStyle = "none";
-    questionElement.className = "li";
+    questionElement.style.listStyle = "decimal inside";
+    //questionElement.className = "li";
     questionElement.innerText = question;
 
     return questionElement;
@@ -248,4 +248,10 @@ function relocateUser(location){
     var queryString = decodeURIComponent(window.location.search);
     var user = queryString.split("=")[1];
     window.location.href = location + "?user=" + user;
+}
+
+function assignUsernameValue(id, message = ""){
+    var queryString = decodeURIComponent(window.location.search);
+    var user = queryString.split("=")[1];
+    document.getElementById(id).innerHTML = message + user; 
 }

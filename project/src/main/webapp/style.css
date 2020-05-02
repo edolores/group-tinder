@@ -163,11 +163,11 @@ body {
 
 /*  ARIELS CSS BELOW  */
 
-.heading1{
+.h1{
     border-bottom: 5px solid black;
     font-size: 500%;
 }
-.heading2{
+.h2{
     font-family: "Gill Sans", sans-serif;
     font-size: 27pt;
 }
